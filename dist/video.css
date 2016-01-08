@@ -1,0 +1,128 @@
+/* set up the outer percentage width */
+/* set up the outer percentage width */
+.parent {
+  width:100%;
+  position:relative;
+  z-index:10;
+  }
+/* set up the aspect ratio of the video */
+.overlay {
+  width:100%;
+  height:0;
+  padding-bottom:56.25%;
+  overflow:hidden;
+  position:relative;
+  margin:0 auto;
+  }
+/* hide the default video controls */
+.overlay iframe {
+  width:100%;
+  height:180%;
+  position:absolute;
+  left:0;
+  top:-40%;
+  z-index:-1;
+  }
+/* Use CSS art to draw the 'Play / Pause' button */
+.playpause {
+  width:65px;
+  height:40px;
+  background: rgba(0,0,0,0.8);
+  border-radius:5px;
+  position:absolute;
+  left:0;
+  top:0;
+  right:0;
+  bottom:0;
+  margin:auto;
+  z-index:100;
+  opacity:1;
+  cursor:pointer;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  }
+.playpause:before {
+  display:block;
+  content:"";
+  width:0;
+  height:0;
+  border-top:10px solid transparent;
+  border-bottom:10px solid transparent;
+  border-left:20px solid #fff;
+  position:absolute;
+  left:23px;
+  top:10px;
+  }
+.playpause.pause {
+  opacity:0;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  }
+.playpause.pause:before {
+  display:block;
+  content:"";
+  width:6px;
+  height:20px;
+  border-left:6px solid #fff;
+  border-right:6px solid #fff;
+  border-width:0 6px;
+  }
+.playpause:hover {
+  background-color:#00adef;
+  }
+.overlay:hover .playpause {
+  opacity:1;
+  }
+@media only screen and (max-width:768px) {
+  .parent {
+    width:90%;
+    margin:50px auto;
+  }
+}
+/* fixes for the iPhone and iPad to show default controls */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)  {
+  .overlay iframe {
+    height:100%;
+    top:0;
+    z-index:200;
+  }
+}
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : portrait) {
+  .overlay iframe {
+    height:100%;
+    top:0;
+    z-index:200;
+  }
+}
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 667px) {
+  .overlay iframe {
+    height:100%;
+    top:0;
+    z-index:200;
+  }
+}
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 568px) {
+  .overlay iframe {
+    height:100%;
+    top:0;
+    z-index:200;
+  }
+}
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+  .overlay iframe {
+    height:100%;
+    top:0;
+    z-index:200;
+  }
+}
