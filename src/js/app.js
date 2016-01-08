@@ -16,10 +16,6 @@
 //       // displayElement.innerHTML = slide2;
 // }
 
-//need to add functionality that allow changes of value
-// document.getElementById('input1').disabled = true;
-
-
 
 $(document).ready(function(){
   var val = $('#input1').val();
@@ -35,12 +31,12 @@ $(document).ready(function(){
     }
   });
 
-  var rangeValues ={
+  var rangeValues = {
     "0.5": "10 kpbs",
-    "1": "50 kpbs",
+    "1": "50 mbps",
     "1.5": "1 mbps",
-    "2": "25 mpbs",
-    "2.5": "50 mpbs",
+    "2": "25 mbps",
+    "2.5": "50 mbps",
     "3": "75 mpbs",
     "3.5": "100 mpbs",
     "4": "250 mpbs",
@@ -56,7 +52,7 @@ $(document).ready(function(){
     });
 
 
-  var ticks = '<div class="sliderTickmarks "><span>10kbps</span></div>';
+  var ticks = '<div class="sliderTickmarks "><span>10 kbps</span></div>';
       ticks += '<div class="sliderTickmarks "><span></span></div>';
       ticks += '<div class="sliderTickmarks "><span>1 mbps</span></div>';
       ticks += '<div class="sliderTickmarks "><span></span></div>';
@@ -74,33 +70,31 @@ $(document).ready(function(){
 
 // Select all range inputs, watch for change
 $("#input2").change(function() {
+   el = $(this);
 
- // Cache this for efficiency
- el = $(this);
+   // Measure width of range input
+   width = el.width();
 
- // Measure width of range input
- width = el.width();
+   // Figure out placement percentage between left and right of input
+   newPoint = (el.val() - el.attr("min")) / (el.attr("max") - el.attr("min"));
 
- // Figure out placement percentage between left and right of input
- newPoint = (el.val() - el.attr("min")) / (el.attr("max") - el.attr("min"));
+    offset = -.5;
 
-  offset = -.5;
+   // Prevent bubble from going beyond left or right (unsupported browsers)
+   if (newPoint < 0) { newPlace = 0; }
+   else if (newPoint > 1) { newPlace = width; }
+   else { newPlace = width * newPoint + offset; offset -= newPoint; }
 
- // Prevent bubble from going beyond left or right (unsupported browsers)
- if (newPoint < 0) { newPlace = 0; }
- else if (newPoint > 1) { newPlace = width; }
- else { newPlace = width * newPoint + offset; offset -= newPoint; }
-
- // Move bubble
- $(".outputme")
-   .css({
-     left: newPlace,
-     marginLeft: offset + "%"
+   // Move bubble
+   $(".outputme")
+     .css({
+       left: newPlace,
+       marginLeft: offset + "%"
+     });
+      //  .text(el.val());
    });
-    //  .text(el.val());
- })
- // Fake a change to position bubble at page load
- .trigger('change');
+   // Fake a change to position bubble at page load
+  //  .trigger('change');
 
 
 });
