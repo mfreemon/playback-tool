@@ -40,7 +40,6 @@ input[type=range]::-webkit-slider-thumb:before {
   height: 5px; }
 
 section.range-slider input {
-  pointer-events: none;
   position: absolute;
   overflow: hidden;
   left: 0;
@@ -99,9 +98,14 @@ output {
   color: white;
   border-radius: 10px;
   display: inline-block;
-  font: 15px/30px Helvetica;
   bottom: 100%;
   left: 0; }
+  output label {
+    font: 15px;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
+
+.first-word {
+  font-weight: bold; }
 
 .sliderTickmarks {
   box-sizing: border-box;

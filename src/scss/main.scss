@@ -75,7 +75,7 @@ input[type=range]::-webkit-slider-thumb:before {
 section.range-slider{
 
  input {
-   pointer-events: none;
+  //  pointer-events: none;
    position: absolute;
    overflow: hidden;
    left: 0;
@@ -89,6 +89,7 @@ section.range-slider{
  #input1 {
    height: 50px;
    top: 6px;
+   //yellow thumb
   &::-webkit-slider-thumb:after {
     border: none;
     height: 20px;
@@ -144,9 +145,17 @@ output {
   color: white;
   border-radius: 10px;
   display: inline-block;
-  font: 15px/30px Helvetica;
   bottom: 100%;
   left: 0;
+
+  label {
+    font: 15px;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  }
+}
+
+.first-word {
+  font-weight: bold;
 }
 
 .sliderTickmarks{

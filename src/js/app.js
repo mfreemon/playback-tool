@@ -32,10 +32,10 @@ $(document).ready(function(){
   });
 
   var rangeValues = {
-    "0.5": "10 kpbs",
-    "1": "50 mbps",
+    "0.5": "10 kbps",
+    "1": "50 kbps" ,
     "1.5": "1 mbps",
-    "2": "25 mbps",
+    "2": "25 mpbs",
     "2.5": "50 mbps",
     "3": "75 mpbs",
     "3.5": "100 mpbs",
@@ -49,7 +49,22 @@ $(document).ready(function(){
 
   $('#input2').on('input change', function(){
       $('#rangeText').text(rangeValues[$(this).val()]);
+
+      $('#rangeText').each(function(){
+        var word = $(this).text();
+        var index = word.indexOf('');
+        console.log(word);
+        console.log(index);
+        if (index == -1){
+          index = word.length;
+          console.log(word.length);
+        }
+      $(this).html('<span class="first-word">' + word.substring(3, index) + '</span>' + word.substring(3, 8));
+      console.log (word.substring());
+      });
     });
+
+
 
 
   var ticks = '<div class="sliderTickmarks "><span>10 kbps</span></div>';
@@ -66,7 +81,10 @@ $(document).ready(function(){
   $(".range-slider").append(ticks);
 
 
-  var el, newPoint, newPlace, offset;
+  var el,
+      newPoint,
+      newPlace,
+      offset;
 
   // Select all range inputs, watch for change
   $("#input2").change(function() {
